@@ -4,19 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        ul {
-            list-style:circle;
-            max-width: 300px;
+        body {
+            background-color: rgb(245, 245, 245);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Roboto", sans-serif;
+        }
+
+        input[type=text] {
+            border-radius: 20px;
+            padding: 10px 15px 10px 15px;
+            border: 1px solid rgb(231, 231, 231);
+            box-shadow: 0px 0px 15px rgb(228, 228, 228);
+            font-family: "Roboto", sans-serif;
+            width: 70%;
+            font-size: 1.1rem;
+        }
+
+        input[type=submit] {
+            border-radius: 20px;
+            padding: 10px 15px 10px 15px;
+            border: 1px solid rgb(231, 231, 231);
+            font-family: "Roboto", sans-serif;
+            width: 30%;
+            background-color: rgb(25, 25, 255);
+            box-shadow: 0px 0px 15px rgb(228, 228, 228);
+            color: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        input[type=text]:focus {
+            outline: none;
+            border: 2px solid rgb(25, 25, 255);
+        }
+
+        h1 {
+            text-align: center;
         }
 
         li {
             font-size: 1.3rem;
             color: black;
+            cursor: pointer;
+            padding: 10px 20px 10px 20px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 15px rgb(228, 228, 228);
+            opacity: 1;
+            transition: 0.5s;
         }
 
         li:hover {
-            color: gray;
+            color: white;
+            background-color: red;
+        }
+
+        #compras {
+            list-style: none;
+            padding: 10px 0px 20px 0px;
+            max-width: 100%;
+            max-height: 300px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            max-height: 500px;
+            box-sizing: border-box;
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            box-shadow: 5px 5px 15px rgb(199, 199, 199);
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .entry {
+            display: flex;
+            box-sizing: border-box;
+            gap: 10px;
         }
 
         .comprado {
@@ -24,25 +106,58 @@
             color: white;
             background-color: green;
         }
+
+        .item-novo {
+            opacity: 0;
+            transform: translateY(-20px); /* Opcional: para um efeito de "slide-up" */
+        }
     </style>
 </head>
 <body>
-    <h1>Lista de Compras</h1>
+    <div class="container">
+        <h1>Lista de Compras</h1>
 
-    <ul id="compras">
-        <li>Feijão</li>
-        <li>Maça</li>
-        <li>Farinha de Trigo</li>
-        <li>Arroz</li>
-        <li>Picanha</li>
-    </ul>
+        <div class="entry">
+            <input type="text" id="item" placeholder="Digite o item a ser comprado">
+            <input type="submit" value="Adicionar" onclick="addItem()">
+        </div>
+
+        <ul id="compras">
+            
+        </ul>
+    </div>
+    
 
     <script>
-        document.querySelectorAll('#compras li').forEach(item => {
-            item.addEventListener('click', () => {
-                item.classList.toggle('comprado');
-            })
-        })
+        var input = document.getElementById('item');
+        var compras = document.getElementById('compras');
+
+        compras.addEventListener('click', (event) => {
+            if (event.target.tagName === 'LI') {
+                const item = event.target;
+                item.style.opacity = 0;
+                
+                setTimeout(() => {
+                    item.remove();
+                }, 500);
+            }
+        });
+
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                addItem();
+            }
+        });
+
+        function addItem() {
+            let item = document.createElement('li');
+            item.classList.add('item-novo');
+            item.textContent = input.value;
+            compras.appendChild(item);
+            void item.offsetWidth;
+            item.classList.remove('item-novo');
+            input.value = '';
+        }
     </script>
 </body>
 </html>
