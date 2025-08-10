@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: pink;
+        }
+
+        .content {
+            width: 1200px;
+        }
+
+        .cabecalho {
+            width: 1200px;
+            display: flex;
+            justify-content:space-between;
+        }
+
+        h1 {
+            color: rgb(163, 1, 101);
+        }
+
+        ol {
+            list-style-position: inside;
+            padding: 10px;
+            max-width: 300px;
+        }
+
+        li {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        li:hover {
+            color: rgb(163, 1, 101);
+        }
+
+        .feito {
+            text-decoration: line-through;
+            color: gray;
+            background-color: #d1ffd1;
+        }
+
+        .menu > ul {
+            display: flex;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cabecalho">
+            <div>
+                <img src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="250px">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>Home</li>
+                    <li>Receitas</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <img id="bolo" src="https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/oembed_thumbnails/Pyf_9U0mMIkRLesZydQGZhB4ZXXVeBxoKV30zRH3Frk.webp?itok=bXbG5Kp0">
+            <h1>Receita de Bolo de Morango</h1>
+            <p>Receita de Bolo Nesquik de Morango saboroso feito com NESQUIK de morango e coberto com ganache de Creme de Leite NESTLÉ com Chocolate NESTLÉ CLASSIC ao Leite.</p>
+
+
+            <h2>Ingredientes</h2>
+            <h3>Massa</h3>
+            <ul>
+                <li>3 ovos</li>
+                <li>1/2 xícara (chá) de óleo</li>
+                <li>1 xícara (chá) de açúcar</li>
+                <li>130 g de NESQUIK® em Pó</li>
+                <li>1/2 xícara (chá) de Leite Líquido NINHO® Forti+ Integral</li>
+                <li>2 xícaras (chá) de farinha de trigo</li>
+                <li>1 colher (sopa) de fermento em pó</li>
+            </ul>
+
+            <h3>Cobertura</h3>
+            <ul>
+                <li>200 g de Chocolate NESTLÉ® CLASSIC® ao Leite</li>
+                <li>200 g de Creme De Leite NESTLÉ®</li>
+                <li>Confeito a gosto</li>
+            </ul>
+
+            <h2>Modo de Preparo</h2>
+            <h3>Massa</h3>
+
+            <ol id="passos">
+                <li>Em uma tigela grande, adicione os ovos, o óleo e o açúcar, e bata com um batedor de arame.</li>
+                <li>Em seguida, adicione e o NESQUIK em pó sabor morango à tigela. Misture bem até obter uma massa homogênea.</li>
+                <li>Acrescente aos poucos o leite e a farinha de trigo peneirada à massa e continue mexendo até incorporá-los à massa.</li>
+                <li>Por último, adicione o fermento em pó à massa e misture suavemente até que esteja completamente incorporado.</li>
+                <li>Despeje a massa na forma redonda (22cm) untada e leve ao forno preaquecido a 180ºC por aproximadamente 30 a 40 minutos, ou até que ao espetar um palito no centro do bolo, ele saia limpo.</li>
+                <li>Retire o bolo do forno assim que estiver pronto e deixe esfriar por alguns minutos na forma antes de desenformá-lo.</li>
+            </ol>
+        </div>
+    </main>
+    
+    <script>
+        document.querySelectorAll('#passos li').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('feito');
+            })
+        })
+
+        document.querySelectorAll('#bolo').forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.src = 'https://vovopalmirinha.com.br/wp-content/uploads/2017/05/bolo-morango.jpg';
+            })
+        })
+
+        document.querySelectorAll('#bolo').forEach(item => {
+            item.addEventListener('mouseout', () => {
+                item.src = 'https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/oembed_thumbnails/Pyf_9U0mMIkRLesZydQGZhB4ZXXVeBxoKV30zRH3Frk.webp?itok=bXbG5Kp0';
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+    <style>
+        table {
+            width: 350px;
+        }
+
+        thead {
+            background-color: blue;
+            color: white;
+        }
+
+        tbody {
+            background-color: rgb(231, 231, 231);
+        }
+
+        .selecionado {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notas de alunos</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody id="tabela">
+            <tr>
+                <th>Matheus Bragança</th>
+                <th>3.5</th>
+            </tr>
+            <tr>
+                <th>Lucas Montano</th>
+                <th>8.7</th>
+            </tr>
+            <tr>
+                <th>Luiz Carlos</th>
+                <th>10.0</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.querySelectorAll('#tabela tr').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('selecionado')
+            })
+        })
+    </script>
+</body>
+</html>

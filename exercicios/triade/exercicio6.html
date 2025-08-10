@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(247, 247, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Roboto", sans-serif;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        .container {
+            min-width: 400px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.164);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        #email {
+            border-radius: 15px;
+            border: 1px solid rgb(148, 148, 148);
+            font-size: 1.1rem;
+            padding: 5px 10px 5px 10px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            transform: 1s;
+            text-align: center;
+        }
+
+        #email:focus {
+            border: 1px solid blue;
+        }
+
+        #botao {
+            background-color: blue;
+            color: white;
+            border-radius: 20px;
+            width: 100%;
+            border: none;
+            padding: 5px 10px 5px 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .field {
+            min-width: 400px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #result {
+            margin-top: 10px;
+        }
+
+        .email {
+            color:rgb(71, 71, 71);
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        .sucesso {
+            color: green;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        .erro {
+            color: red;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Validação de e-mail</h2>
+        <br>
+        <form>
+            <label for="email">E-mail</label>
+            <div class="field">
+                <input type="email" id="email" name="email" onchange="validateEmail()">
+                <p id="result" class="email">ℹ️ Digite o seu e-mail</p>
+            </div>
+            
+            <input id="botao" type="submit" onclick="validar" value="Validar">
+        </form>
+    </div>
+
+    <script>
+        function validateEmail() {
+            var element = document.querySelector('#email');
+            var email = element.value;
+            var re = /\S+@\S+\.\S+/;
+            var result = document.querySelector('#result');
+            if (re.test(email)) {
+                result.textContent = '✅ E-mail válido';
+                result.className = 'sucesso';
+            } else {
+                result.textContent = '❌ E-mail inválido';
+                result.className = 'erro';
+            }
+        }
+    </script>
+</body>
+</html>

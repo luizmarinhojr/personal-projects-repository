@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+    <style>
+        body {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        #cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            width: 250px;
+            background-color: rgb(235, 235, 235);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .card:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transform:scale(1.08)
+        }
+    </style>
+</head>
+<body>
+    <h1>Marcas de carro</h1>
+
+    <div id="cards">
+        <div class="card">
+            <h2>Mercedes</h2>
+            <p>Criada na Alemanha e voltada ao mercado de luxo</p>
+        </div>
+        <div class="card">
+            <h2>Toyota</h2>
+            <p>Criada no Japão e voltada na qualidade</p>
+        </div>
+        <div class="card">
+            <h2>Ford</h2>
+            <p>Criada nos EUA e voltada para potência</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('#cards .card').forEach(item => {
+            item.addEventListener('click', () => {
+                const descricao = item.querySelector('p');
+                descricao.textContent = "Você clicou neste cartão!";
+            });
+        });
+    </script>
+</body>
+</html>

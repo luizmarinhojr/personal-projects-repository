@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(245, 245, 245);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        button {
+            background-color: rgb(0, 167, 0);
+            color: white;
+            font-size: 1.3rem;
+            border: 1px solid rgb(241, 241, 241);
+            border-radius: 15px;
+            padding: 10px 20px 10px 20px;
+            cursor: pointer;
+        }
+
+        #square {
+            height: 300px;
+            width: 300px;
+            background-color: rgb(199, 199, 199);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 5px 5px 20px rgb(136, 136, 136);
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        span {
+            font-size: 1.3rem;
+        }
+
+        .info {
+            background-color: rgba(255, 255, 255, 0.39);
+            border-radius: 15px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jogo de Cores Aleatórias</h1>
+
+        <button onclick="generateRandomColor()">Gerar Cor Aleatória</button>
+
+        <div id="square" onclick="copy()">
+            <div class="info">
+                <p style="font-size: 0.9rem; margin-bottom: 5px;">Clique para Copiar</p>
+                <span id="color">Sua cor aleatória aparecerá aqui</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var square = document.getElementById('square')
+        var color = document.getElementById('color');
+
+        function generateRandomColor() {
+            let randomColor = '#' + Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0');
+            square.style.backgroundColor = randomColor;
+            color.textContent = randomColor;
+        }
+
+        function copy() {
+            if (color.textContent.length < 10) {
+                navigator.clipboard.writeText(color.textContent);
+                alert('Cor copiada ' + color.textContent);
+            } else {
+                alert('Clique primeiro em Gerar Cor Aleatória')
+            }
+        }
+    </script>
+</body>
+</html>

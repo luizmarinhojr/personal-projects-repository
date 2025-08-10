@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(241, 241, 241);
+            margin: 0;
+            border:0;
+        }
+
+        #container {
+            width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 10px 10px 10px;
+            border-radius: 15px;
+            color: white;
+            border: 1px solid rgb(245, 245, 245);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        #modal-button {
+            background-color: blue;
+        }
+
+        #modal-button:hover {
+            transform: scale(1.05);
+            transition: 0.2s;
+        }
+
+        #modal {
+            position:fixed;
+            background-color: rgba(0, 0, 0, 0.863);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            box-shadow: 5px 5px 15px rgb(185, 185, 185);
+        }
+
+        #close-button {
+            background-color: red;
+        }
+
+        #modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Modal Simples com CSS e JavaScript </h1>
+        <button id="modal-button" onclick="openModal()">Abrir Modal</button>
+    </div>
+
+    <div id="modal" class="hidden">
+        <h2>Bem-vindo ao Modal!</h2>
+        <button id="close-button" onclick="closeModal()">X Fechar Modal</button>
+    </div>
+
+    <script>
+        var modal = document.getElementById('modal');
+
+        function openModal() {
+            modal.className = '';
+        }
+
+        function closeModal() {
+            modal.className = 'hidden';
+        }
+    </script>
+</body>
+</html>
