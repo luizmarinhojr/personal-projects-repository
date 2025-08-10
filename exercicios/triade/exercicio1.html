@@ -4,55 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         body {
+            max-width: 100vw;
             padding: 0;
             margin: 0;
+            background-color: #f3f3f3;
+            font-family: "Roboto", sans-serif;
         }
 
         main {
             display: flex;
+            width: 100%;
             justify-content: center;
-            padding-top: 30px;
         }
 
         header {
             display: flex;
+            position: sticky;
+            top: 0;
+            width: 100%;
             justify-content: center;
             align-items: center;
             background-color: pink;
+            z-index: 100;
         }
 
         .content {
-            width: 1200px;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            padding: 20px;
+            gap: 40px;
+            box-sizing: border-box;
         }
 
         .cabecalho {
             width: 1200px;
             display: flex;
             justify-content:space-between;
+            padding: 10px 20px 10px 20px;
+            align-items: center;
+            box-sizing: border-box;
         }
 
         h1 {
-            color: rgb(163, 1, 101);
+            color: rgb(0, 0, 0);
+        }
+
+        ul {
+            list-style-position: inside;
+            list-style: none;
+            padding: 0;
         }
 
         ol {
             list-style-position: inside;
-            padding: 10px;
-            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        p {
+            font-size: 1.1rem;
         }
 
         li {
-            margin: 10px 0;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            font-size: 1.1rem;
         }
 
-        li:hover {
-            color: rgb(163, 1, 101);
+        ol > li {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            background-color: rgb(255, 255, 255);
+        }
+
+        ol > li:hover {
+            background-color: #d4d4d4;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 20px;
         }
 
         .feito {
@@ -61,18 +101,60 @@
             background-color: #d1ffd1;
         }
 
+        .a-side {
+            max-width: 50%;
+        }
+
+        .b-side {
+            max-width: 50%;
+            position: sticky;
+            top: 120px;
+            height: 100vh;
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
         .menu > ul {
             display: flex;
             list-style: none;
+            gap: 20px;
+        }
+
+        @media (max-width: 850px) {
+            main {
+                padding-top: 10px;
+            }
+
+            .content {
+                width: 100%;
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 0;
+                padding: 10px 20px 20px 20px;
+                box-sizing: border-box;
+            }
+
+            .a-side {
+                max-width: 100%;
+            }
+
+            .b-side {
+                max-width: 100%;
+                top: 120px;
+                position: static;
+                height: 100%;
+                background-color: #ffffff00;
+                padding: 0;
+                border-radius: 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="cabecalho">
-            <div>
-                <img src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="250px">
-            </div>
+            <img src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="250px">
             <div class="menu">
                 <ul>
                     <li>Home</li>
@@ -83,41 +165,50 @@
     </header>
     <main>
         <div class="content">
-            <img src="https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/oembed_thumbnails/Pyf_9U0mMIkRLesZydQGZhB4ZXXVeBxoKV30zRH3Frk.webp?itok=bXbG5Kp0">
-            <h1>Receita de Bolo de Morango</h1>
-            <p>Receita de Bolo Nesquik de Morango saboroso feito com NESQUIK de morango e coberto com ganache de Creme de Leite NESTLÉ com Chocolate NESTLÉ CLASSIC ao Leite.</p>
+            <div class="a-side">
+                <h1>Receita de Bolo de Morango</h1>
+                <p>Receita de Bolo Nesquik de Morango saboroso feito com NESQUIK de morango e coberto com ganache de Creme de Leite NESTLÉ com Chocolate NESTLÉ CLASSIC ao Leite.</p>
 
+                <h2>Ingredientes</h2>
+                <h3>Massa</h3>
+                <ul>
+                    <li>3 ovos</li>
+                    <li>1/2 xícara (chá) de óleo</li>
+                    <li>1 xícara (chá) de açúcar</li>
+                    <li>130 g de NESQUIK® em Pó</li>
+                    <li>1/2 xícara (chá) de Leite Líquido NINHO® Forti+ Integral</li>
+                    <li>2 xícaras (chá) de farinha de trigo</li>
+                    <li>1 colher (sopa) de fermento em pó</li>
+                </ul>
 
-            <h2>Ingredientes</h2>
-            <h3>Massa</h3>
-            <ul>
-                <li>3 ovos</li>
-                <li>1/2 xícara (chá) de óleo</li>
-                <li>1 xícara (chá) de açúcar</li>
-                <li>130 g de NESQUIK® em Pó</li>
-                <li>1/2 xícara (chá) de Leite Líquido NINHO® Forti+ Integral</li>
-                <li>2 xícaras (chá) de farinha de trigo</li>
-                <li>1 colher (sopa) de fermento em pó</li>
-            </ul>
+                <h3>Cobertura</h3>
+                <ul>
+                    <li>200 g de Chocolate NESTLÉ® CLASSIC® ao Leite</li>
+                    <li>200 g de Creme De Leite NESTLÉ®</li>
+                    <li>Confeito a gosto</li>
+                </ul>
 
-            <h3>Cobertura</h3>
-            <ul>
-                <li>200 g de Chocolate NESTLÉ® CLASSIC® ao Leite</li>
-                <li>200 g de Creme De Leite NESTLÉ®</li>
-                <li>Confeito a gosto</li>
-            </ul>
+                <h2>Modo de Preparo</h2>
+                <h3>Massa</h3>
 
-            <h2>Modo de Preparo</h2>
-            <h3>Massa</h3>
+                <ol id="passos">
+                    <li>Em uma tigela grande, adicione os ovos, o óleo e o açúcar, e bata com um batedor de arame.</li>
+                    <li>Em seguida, adicione e o NESQUIK em pó sabor morango à tigela. Misture bem até obter uma massa homogênea.</li>
+                    <li>Acrescente aos poucos o leite e a farinha de trigo peneirada à massa e continue mexendo até incorporá-los à massa.</li>
+                    <li>Por último, adicione o fermento em pó à massa e misture suavemente até que esteja completamente incorporado.</li>
+                    <li>Despeje a massa na forma redonda (22cm) untada e leve ao forno preaquecido a 180ºC por aproximadamente 30 a 40 minutos, ou até que ao espetar um palito no centro do bolo, ele saia limpo.</li>
+                    <li>Retire o bolo do forno assim que estiver pronto e deixe esfriar por alguns minutos na forma antes de desenformá-lo.</li>
 
-            <ol id="passos">
-                <li>Em uma tigela grande, adicione os ovos, o óleo e o açúcar, e bata com um batedor de arame.</li>
-                <li>Em seguida, adicione e o NESQUIK em pó sabor morango à tigela. Misture bem até obter uma massa homogênea.</li>
-                <li>Acrescente aos poucos o leite e a farinha de trigo peneirada à massa e continue mexendo até incorporá-los à massa.</li>
-                <li>Por último, adicione o fermento em pó à massa e misture suavemente até que esteja completamente incorporado.</li>
-                <li>Despeje a massa na forma redonda (22cm) untada e leve ao forno preaquecido a 180ºC por aproximadamente 30 a 40 minutos, ou até que ao espetar um palito no centro do bolo, ele saia limpo.</li>
-                <li>Retire o bolo do forno assim que estiver pronto e deixe esfriar por alguns minutos na forma antes de desenformá-lo.</li>
-            </ol>
+                    <h3>Cobertura</h3>
+
+                    <li>Em um recipiente, derreta o Chocolate NESTLÉ CLASSIC ao leite em banho-maria ou no microondas. Quando o chocolate estiver derretido, adicione o Creme de Leite NESTLÉ e misture até obter um ganache cremoso e homogêneo.</li>
+                    <li>Desenforme o bolo e cubra-o com a cobertura de chocolate. Decore com os confeitos de chocolate a gosto.</li>
+                </ol>
+            </div>
+            <div class="b-side">
+                <img src="https://www.receitasnestle.com.br/sites/default/files/styles/recipe_detail_desktop_new/public/oembed_thumbnails/Pyf_9U0mMIkRLesZydQGZhB4ZXXVeBxoKV30zRH3Frk.webp?itok=bXbG5Kp0">
+                <p style="margin: 5px;">Avaliação: ⭐⭐⭐⭐⭐  |  Tempo de preparo ~50 min</p>
+            </div>
         </div>
     </main>
     
