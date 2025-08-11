@@ -4,57 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        table {
-            width: 350px;
+        body {
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(240, 240, 240);
+            font-family: "Roboto", sans-serif;
         }
 
-        thead {
-            background-color: blue;
+        main {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            text-align: center;
+        }
+
+        input[type=text] {
+            font-size: 1.2rem;
+            outline: none;
+            border-radius: 20px;
+            border: 1px solid rgb(228, 228, 228);
+            padding: 10px 20px 10px 20px;
+        }
+
+        input[type=text]:focus {
+            border: 1px solid #0086FF;
+        }
+
+        input[type=submit] {
+            padding: 10px 20px 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgb(228, 228, 228);
+            width: 100%;
+            font-size: 1.2rem;
+            background-color:#0086FF;
             color: white;
+            cursor: pointer;
+        }
+
+        .form-aluno, .form-nota, .form-submit {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            gap: 5px;
+        }
+
+        table {
+            margin-top: 15px;
+            max-width: 100%;
+            font-size: 1.1rem;
+            border-collapse:separate;
+        }
+
+        th {
+            background-color: #0086FF;
+            color: white;
+            padding: 10px 20px 10px 20px;
+        }
+
+        td {
+            padding: 5px 20px 5px 20px;
+        }
+
+        tbody > tr {
+            cursor: pointer;
+            background-color: white;
+            opacity: 1;
+            transition: 0.4s;
+        }
+
+        tbody > tr:hover {
+            transform: scale(1.05);
         }
 
         tbody {
-            background-color: rgb(231, 231, 231);
+            background-color: rgb(255, 255, 255);
+        }
+
+        .h-aluno {
+            border-radius: 20px 0px 0px 0px;
+        }
+
+        .h-nota {
+            border-radius: 0px 20px 0px 0px;
         }
 
         .selecionado {
-            background-color: green;
+            background-color: #59C00B;
+        }
+
+        .linha-nova {
+            opacity: 0;
         }
     </style>
 </head>
 <body>
-    <h1>Notas de alunos</h1>
+    <main>
+        <h1>Notas de alunos</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Aluno</th>
-                <th>Nota</th>
-            </tr>
-        </thead>
-        <tbody id="tabela">
-            <tr>
-                <th>Matheus Bragança</th>
-                <th>3.5</th>
-            </tr>
-            <tr>
-                <th>Lucas Montano</th>
-                <th>8.7</th>
-            </tr>
-            <tr>
-                <th>Luiz Carlos</th>
-                <th>10.0</th>
-            </tr>
-        </tbody>
-    </table>
+        <div class="form-aluno">
+            <label for="aluno">Aluno</label>
+            <input type="text" id="aluno" name="aluno" placeholder="Digite o nome do aluno">
+        </div>
+        
+        <div class="form-nota">
+            <label for="nota">Nota</label>
+            <input type="text" id="nota" name="nota" placeholder="Digite a nota do aluno">
+        </div>
+        
+        <div class="form-submit">
+            <input type="submit" id="adicionar" value="Adicionar" onclick="addAluno()">
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="h-aluno">Aluno</th>
+                    <th class="h-nota">Nota</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                
+            </tbody>
+        </table>
+    </main>
 
     <script>
-        document.querySelectorAll('#tabela tr').forEach(item => {
-            item.addEventListener('click', () => {
-                item.classList.toggle('selecionado')
-            })
+        var submit = document.getElementById('adicionar');
+        var tabela = document.getElementById('tabela');
+        var aluno = document.getElementById('aluno');
+        var nota = document.getElementById('nota');
+
+        tabela.addEventListener('click', (event) => {
+            let linha = event.target.closest('tr');
+            if (linha) {
+                linha.classList.toggle('selecionado');
+            }
         })
+
+        function addAluno() {
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            const dados = [aluno.value, nota.value];
+
+            dados.forEach(dado => {
+                let td = document.createElement('td');
+                td.textContent = dado;
+                tr.appendChild(td);
+            })
+            tr.classList.add('linha-nova');
+            tabela.appendChild(tr);
+            void tr.offsetWidth;
+            tr.classList.remove('linha-nova');
+            aluno.value = '';
+            nota.value = '';
+        }
     </script>
 </body>
 </html>
