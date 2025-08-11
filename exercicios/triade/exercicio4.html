@@ -101,6 +101,10 @@
             width: 250px;
         }
 
+        .logo-mobile {
+            display: none;
+        }
+
         .feito {
             text-decoration: line-through;
             color: rgb(240, 240, 240);
@@ -174,7 +178,11 @@
             }
 
             .logo {
-                width: 190px;
+                display:none;
+            }
+
+            .logo-mobile {
+                display: block;
             }
 
             .menu {
@@ -239,7 +247,8 @@
 <body>
     <header>
         <div class="cabecalho">
-            <img class="logo" src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png">
+            <img class="logo" src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="250px" height="59px">
+            <img class="logo-mobile" src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="190px" height="45px">
             <div class="menu">
                 <ul>
                     <li>Home</li>
@@ -247,13 +256,13 @@
                 </ul>
             </div>
             <div class="menu-mobile">
-                <img src="/assets/menu-icon.svg" id="menu-icon" width="30px" onclick="openModal()">
+                <img src="/assets/menu-icon.svg" id="menu-icon" width="30px" height="30px" onclick="openModal()">
             </div>
         </div>
         <div id="modal">
             <div class="modal-header">
-                <img src="/assets/menu-icon.svg" id="menu-icon" width="30px" onclick="closeModal()">
-                <img class="logo" src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png">
+                <img src="/assets/menu-icon.svg" id="menu-icon" width="30px" height="30px" onclick="closeModal()">
+                <img class="logo-mobile" src="https://www.receiteria.com.br/wp-content/themes/receiteriav2/assets/receiteria.png" width="190px" height="45px">
             </div>
             <ul>
                 <li>Início</li>
