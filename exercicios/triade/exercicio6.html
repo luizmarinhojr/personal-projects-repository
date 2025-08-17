@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 6</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         body {
             background-color: rgb(247, 247, 247);
@@ -81,7 +83,7 @@
         }
 
         .email {
-            color:rgb(71, 71, 71);
+            color: rgb(71, 71, 71);
             font-size: 0.9rem;
             margin-left: 15px;
         }
@@ -99,27 +101,27 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Validação de e-mail</h2>
         <br>
-        <form>
-            <label for="email">E-mail</label>
-            <div class="field">
-                <input type="email" id="email" name="email" onchange="validateEmail()">
-                <p id="result" class="email">ℹ️ Digite o seu e-mail</p>
-            </div>
-            
-            <input id="botao" type="submit" onclick="validar" value="Validar">
-        </form>
+        <label for="email">E-mail</label>
+        <div class="field">
+            <input type="email" id="email" name="email" oninput="waitValidation()">
+            <p id="result" class="email">ℹ️ Digite o seu e-mail</p>
+        </div>
+
+        <button id="botao" onclick="validateEmail()">Validar</button>
     </div>
 
     <script>
+        var element = document.querySelector('#email');
+        var result = document.querySelector('#result');
+
         function validateEmail() {
-            var element = document.querySelector('#email');
             var email = element.value;
             var re = /\S+@\S+\.\S+/;
-            var result = document.querySelector('#result');
             if (re.test(email)) {
                 result.textContent = '✅ E-mail válido';
                 result.className = 'sucesso';
@@ -128,6 +130,12 @@
                 result.className = 'erro';
             }
         }
+
+        function waitValidation() {
+            result.textContent = 'ℹ️ Digite o seu e-mail';
+            result.className = 'email';
+        }
     </script>
 </body>
+
 </html>
